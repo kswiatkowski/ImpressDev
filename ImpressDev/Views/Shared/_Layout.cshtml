@@ -3,38 +3,98 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <title>@ViewBag.Title | Sklep w ASP.NET MVC</title>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/modernizr-2.8.3.js")"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,600&display=swap&subset=latin-ext" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <header>
+        <div class="container-fluid o-navbar">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg ">
+                    <a href="@Url.Content("~/")">
+                        <img class="o-logo" src="@Url.Content("~/Content/Images/icon-white.png")" />
+                    </a>
+
+                    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#mainmenu" style="color: aqua;"><span class="navbar-toggler-icon"></span></button>
+
+                    <div class="collapse navbar-collapse" id="mainmenu">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-lg-2 px-xl-3">
+                                <a href="#" class="nav-link o-menu-item">Start</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle o-menu-item" data-toggle="dropdown">Kategorie<b class="caret"></b></a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Python</a>
+                                    <a href="#" class="dropdown-item">Python</a>
+                                    <a href="#" class="dropdown-item">Python</a>
+                                    <a href="#" class="dropdown-item">Python</a>
+                                    <a href="#" class="dropdown-item">Python</a>
+                                </div>
+                            </li>
+                            <li class="nav-item px-lg-2 px-xl-3">
+                                <a href="#" class="nav-link o-menu-item-social">GitHub</a>
+                            </li>
+                            <li class="nav-item px-lg-2 px-xl-3">
+                                <a href="#" class="nav-link o-menu-item">Koszyk</a>
+                            </li>
+                            <li class="nav-item px-lg-2 px-xl-3">
+                                <a href="#" class="nav-link o-menu-item">Profil</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+        </div>
+    </header>
+    <div class="container-fluid o-baner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <div class="o-baner-text-1">Sklep programisty</div>
+                    <div class="o-baner-text-2">ImpressDev</div>
+                    <div class="o-baner-text-3">
+                        w technologii ASP.NET MVC
+                        <br class="d-lg-none">
+                        <a class="o-baner-button">Zastosowane rozwiązania</a>
+                    </div>
+                </div>
+                <div class="col-6 d-none d-xl-inline">
+                    <img class="o-baner-img" src="@Url.Content("~/Content/Images/computer.png")">
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    @RenderBody()
+    <div class="container-fluid o-fotter">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="o-fotter-img" src="@Url.Content("~/Content/Images/icon-white.png")" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <a class="o-fotter-link" href="#">GitHub</a>
+                </div>
+                <div class="col-4">
+                    <a class="o-fotter-link" href="#">GitHub</a>
+                </div>
+                <div class="col-4">
+                    <a class="o-fotter-link" href="#">GitHub</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 o-fotter-copy">
+                    &copy;2020 Kamil Świątkowski. All Rights Reserved
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
 </body>
 </html>

@@ -103,6 +103,18 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Books\java.jpg" />
+    <Content Include="Content\Images\Books\javascript.jpg" />
+    <Content Include="Content\Images\Books\php.jpg" />
+    <Content Include="Content\Images\Books\python.jpg" />
+    <Content Include="Content\Images\Books\sql.jpg" />
+    <Content Include="Content\Images\Books\swift.jpg" />
+    <Content Include="Content\Images\Books\typescript.jpg" />
+    <Content Include="Content\Images\Books\visualbasic.jpg" />
+    <Content Include="Content\Images\computer.png" />
+    <Content Include="Content\Images\icon-white.png" />
+    <Content Include="Content\Images\map.png" />
+    <Content Include="Content\Images\search-icon.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -225,6 +237,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202006240734234_InitialCreate.cs" />
     <Compile Include="Migrations\202006240734234_InitialCreate.designer.cs">
       <DependentUpon>202006240734234_InitialCreate.cs</DependentUpon>
@@ -243,6 +257,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

@@ -1,6 +1,79 @@
-﻿
+﻿@model ImpressDev.ViewModels.HomeViewModel
+@using ImpressDev.Infrastructure
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ImpressDev";
 }
 
+<div class="container-fluid o-category-home">
+    <div class="container o-category-border">
+        <div class="row">
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-6 col-xl-3">
+                    <a class="o-category-link" href="@Url.Action("Index", "Catalog", new { categoryId = category.CategoryId })">&raquo; @category.Name</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
+<div class="container-fluid o-best">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 o-best-heading">
+                #Bestsellery
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (var bestseller in Model.Bestsellers)
+            {
+                <div class="col-xl-4">
+                    <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = bestseller.BookId })">
+                        <div class="o-shop-item">
+                            <img class="o-shop-img" src="@Url.BookPhotoSourcePath(bestseller.PhotoSource)" />
+                            <div class="o-shop-text">
+                                <h2>@bestseller.Title</h2>
+                                <h6>@bestseller.SubTitle - @bestseller.Level - <b>@bestseller.Price zł.</b></h6>
+                                <a href="@Url.Action("AddToCart", "Cart", new { bookId = bestseller.BookId })" class="o-shop-button">+ dodaj do koszyka</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid o-news">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 o-news-heading">
+                #Nowości
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var news in Model.News)
+            {
+                <div class="col-xl-4">
+                    <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = news.BookId })">
+                        <div class="o-shop-item">
+                            <img class="o-shop-img" src="@Url.BookPhotoSourcePath(news.PhotoSource)" />
+                            <div class="o-shop-text">
+                                <h2>@news.Title</h2>
+                                <h6>@news.SubTitle - @news.Level - <b>@news.Price zł.</b></h6>
+                                <a href="@Url.Action("AddToCart", "Cart", new { bookId = news.BookId })" class="o-shop-button">+ dodaj do koszyka</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-xl-6 offset-xl-3 o-home-catalog">
+                <a class="o-catalog-button" href="#">Katalog produktów</a>
+            </div>
+        </div>
+    </div>
+</div>
