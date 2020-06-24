@@ -9,6 +9,11 @@ namespace ImpressDev.DAL
         public ImpressDevContext() : base("ImpressDevContext")
         { }
 
+        static ImpressDevContext()
+        {
+            Database.SetInitializer<ImpressDevContext>(new ImpressDevInitializer());
+        }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }

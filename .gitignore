@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ImpressDev/Migrations/202006240745543_revert test.resx
+/ImpressDev/Migrations/202006240745543_revert test.Designer.cs
+/ImpressDev/Migrations/202006240745543_revert test.cs
+/ImpressDev/Migrations/202006240744370_test migration.resx
+/ImpressDev/Migrations/202006240744370_test migration.Designer.cs
+/ImpressDev/Migrations/202006240744370_test migration.cs

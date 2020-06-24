@@ -221,9 +221,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\ImpressDevContext.cs" />
+    <Compile Include="DAL\ImpressDevInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006240734234_InitialCreate.cs" />
+    <Compile Include="Migrations\202006240734234_InitialCreate.designer.cs">
+      <DependentUpon>202006240734234_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006240744370_test migration.cs" />
+    <Compile Include="Migrations\202006240744370_test migration.designer.cs">
+      <DependentUpon>202006240744370_test migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006240745543_revert test.cs" />
+    <Compile Include="Migrations\202006240745543_revert test.designer.cs">
+      <DependentUpon>202006240745543_revert test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Order.cs" />
@@ -253,6 +267,17 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006240734234_InitialCreate.resx">
+      <DependentUpon>202006240734234_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006240744370_test migration.resx">
+      <DependentUpon>202006240744370_test migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006240745543_revert test.resx">
+      <DependentUpon>202006240745543_revert test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

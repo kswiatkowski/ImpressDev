@@ -14,8 +14,8 @@ namespace ImpressDev.Models
         public string Cover { get; set; }
         public string Pages { get; set; }
         public string Description { get; set; }
-        public string PhotoSource { get; set; }
         public decimal Price { get; set; }
+        public string PhotoSource { get; set; }
 
         public bool Bestseller { get; set; }
         public bool Inaccessible { get; set; }
