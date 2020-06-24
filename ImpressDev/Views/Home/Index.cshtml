@@ -5,16 +5,7 @@
 }
 
 <div class="container-fluid o-category-home">
-    <div class="container o-category-border">
-        <div class="row">
-            @foreach (var category in Model.Categories)
-            {
-                <div class="col-6 col-xl-3">
-                    <a class="o-category-link" href="@Url.Action("Index", "Catalog", new { categoryId = category.CategoryId })">&raquo; @category.Name</a>
-                </div>
-            }
-        </div>
-    </div>
+    @Html.Partial("_PartialCategoriesTop", Model.Categories)
 </div>
 
 <div class="container-fluid o-best">

@@ -228,9 +228,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialCategoriesLeft.cshtml" />
+    <Content Include="Views\Shared\_PartialCategoriesTop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\ImpressDevContext.cs" />
     <Compile Include="DAL\ImpressDevInitializer.cs" />

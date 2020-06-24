@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ImpressDev.Models.Category>
+
+@foreach (var category in Model)
+{
+    <div class="o-category-block">
+        <a class="o-category-item" href="@Url.Action("Index", "Catalog", new { categoryName = category.Name.ToLower() })">@category.Name</a>
+    </div>
+
+}

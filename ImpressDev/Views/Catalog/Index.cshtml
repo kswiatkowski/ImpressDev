@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ImpressDev.Models.Book>
+@using ImpressDev.Infrastructure
+@{
+    ViewBag.Title = "Katalog";
+}
+
+<div class="container-fluid o-catalog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 o-nav-track">
+                Strona Główna > Katalog > ASP.NET MVC
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-2 o-category-nav">
+                @Html.Action("GetCategories")
+            </div>
+
+            <div class="col-12 col-xl-10">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-12 o-page-title">
+                            Katalog produktów
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var book in Model)
+                        {
+                            <div class="col-xl-4">
+                                <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = book.BookId })">
+                                    <div class="o-shop-item">
+                                        <img class="o-shop-img" src="@Url.BookPhotoSourcePath(book.PhotoSource)" />
+                                        <div class="o-shop-text">
+                                            <h2>@book.Title</h2>
+                                            <h6>@book.SubTitle - @book.Level - <b>@book.Price zł.</b></h6>
+                                            <a href="@Url.Action("AddToCart", "Cart", new { bookId = book.BookId })" class="o-shop-button">+ dodaj do koszyka</a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
