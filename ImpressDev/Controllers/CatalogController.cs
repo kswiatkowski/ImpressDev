@@ -31,5 +31,11 @@ namespace ImpressDev.Controllers
             var categories = db.Categories.ToList();
             return PartialView("_PartialCategoriesLeft", categories);
         }
+
+        public ActionResult Details(int bookId = 1)
+        {
+            var book = db.Books.Find(bookId);
+            return View(book);
+        }
     }
 }

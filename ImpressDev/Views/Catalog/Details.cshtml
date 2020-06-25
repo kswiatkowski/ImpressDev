@@ -1,0 +1,52 @@
+﻿@model ImpressDev.Models.Book
+@using ImpressDev.Infrastructure
+@{
+    ViewBag.Title = "Szczegóły";
+}
+
+<div class="container-fluid o-catalog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 o-nav-track">
+                Strona Główna > Katalog > ASP.NET MVC
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-2 o-category-nav">
+                @Html.Action("GetCategories")
+            </div>
+
+            <div class="col-12 col-xl-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 o-page-title">
+                            Szczegóły produktu
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <img class="o-details-img" src="@Url.BookPhotoSourcePath(Model.PhotoSource)" />
+                        </div>
+                        <div class="col-xl-6 o-details-text">
+                            <h3><b>Tytuł: </b>@Model.Title</h3>
+                            <h3>@Model.SubTitle - @Model.Level</h3>
+                            <h3><b>@Model.Price zł.</b></h3>
+                            <br>
+                            <h5>Autor: @Model.Author</h5>
+                            <h5>Wydawnictwo: @Model.PublishingHouse</h5>
+                            <h5>Liczba stron: @Model.Pages</h5>
+                            <h5>Druk: @Model.Cover</h5>
+                            <br><a href="@Url.Action("AddToCart", "Cart", new { bookId = Model.BookId })" class="o-details-button">+ dodaj do koszyka</a>
+                        </div>
+                        <div class="col-12 o-details-desc">
+                            <div class="o-details-desc-bold">Opis:</div>
+                            @Model.Description
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,11 @@ namespace ImpressDev
                 defaults: new { controller = "Catalog", action = "Index" });
 
             routes.MapRoute(
+               name: "Details",
+               url: "katalog/szczegoly/{bookId}",
+               defaults: new { controller = "Catalog", action = "Details" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

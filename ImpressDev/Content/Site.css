@@ -74,7 +74,7 @@ body {
     margin-bottom: 20px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 991px) {
     .o-baner-text-1 {
         font-size: 22px;
         margin-top: 80px;
