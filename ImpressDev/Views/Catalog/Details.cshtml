@@ -1,5 +1,6 @@
 ﻿@model ImpressDev.Models.Book
 @using ImpressDev.Infrastructure
+@using MvcSiteMapProvider.Web.Html
 @{
     ViewBag.Title = "Szczegóły";
 }
@@ -7,8 +8,8 @@
 <div class="container-fluid o-catalog">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-6 o-nav-track">
-                Strona Główna > Katalog > ASP.NET MVC
+            <div class="col-12 col-lg-6 o-nav-track" id="nav-track">
+                @Html.MvcSiteMap().SiteMapPath()
             </div>
         </div>
         <div class="row">
