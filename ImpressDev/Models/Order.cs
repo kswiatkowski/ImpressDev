@@ -30,8 +30,7 @@ namespace ImpressDev.Models
         public DateTime DateAdded { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public decimal Price { get; set; }
-
-        List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
     
     public enum OrderStatus
