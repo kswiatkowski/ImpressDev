@@ -1,16 +1,8 @@
 ﻿
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
 }
 
 /* -- My Style -- */
@@ -284,8 +276,8 @@ body {
 }
 
 .o-search-form {
-    width: 91%;
-    margin: 10px 10px 0 10px;
+    width: 60%;
+    margin: 24px 0px 0 10px;
     float: right;
     padding: 4px;
     border: 1px solid #e0e0e0;
@@ -293,8 +285,11 @@ body {
 
 .o-search-input {
     border: none;
-    width: 87%;
-    padding-left: 3px;
+    width: 90%;
+    padding-left: 5px;
+}
+.o-search-input:focus {
+    outline: none;
 }
 
 .o-search-submit {
@@ -306,10 +301,24 @@ body {
     background: transparent url(Images/search-icon.png) no-repeat;
 }
 
+.o-search-submit:focus {
+    outline: none;
+}
+
 @media (max-width: 1199px) {
     .o-search-form {
         width: 80%;
         margin: 0 10px 0 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .o-search-form {
+        width: 93%;
+    }
+
+    .o-search-input {
+        width: 90%;
     }
 }
 

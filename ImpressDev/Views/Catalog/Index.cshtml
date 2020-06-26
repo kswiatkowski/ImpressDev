@@ -3,6 +3,10 @@
 @using MvcSiteMapProvider.Web.Html
 @{
     ViewBag.Title = "Katalog";
+    foreach (var book in Model)
+    {
+        int categoryIId = book.Category.CategoryId;
+    }
 }
 
 <div class="container-fluid o-catalog">
@@ -21,26 +25,20 @@
                 <div class="container">
 
                     <div class="row">
-                        <div class="col-12 o-page-title">
+                        <div class="col-12 col-xl-6 o-page-title">
                             Katalog produktów
                         </div>
+                        <div class="col-12 col-xl-6">
+                            <form class="o-search-form" id="search-form" method="get" data-ajax="true" data-ajax-target="#booksList">
+                                <input class="o-search-input" id="search-filter" type="search" name="searchQuery"
+                                       data-autocomplete-source="@Url.Action("SearchTips", new { categoryName  = Model.First().Category.Name })"
+                                       placeholder="Szukaj w kategorii @Model.First().Category.Name" />
+                                <input class="o-search-submit" type="submit" value="" />
+                            </form>
+                        </div>
                     </div>
-                    <div class="row">
-                        @foreach (var book in Model)
-                        {
-                            <div class="col-xl-4">
-                                <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = book.BookId })">
-                                    <div class="o-shop-item">
-                                        <img class="o-shop-img" src="@Url.BookPhotoSourcePath(book.PhotoSource)" />
-                                        <div class="o-shop-text">
-                                            <h2>@book.Title</h2>
-                                            <h6>@book.SubTitle - @book.Level - <b>@book.Price zł.</b></h6>
-                                            <a href="@Url.Action("AddToCart", "Cart", new { bookId = book.BookId })" class="o-shop-button">+ dodaj do koszyka</a>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        }
+                    <div class="row" id="booksList">
+                        @Html.Partial("_PartialBooksList")
                     </div>
                 </div>
             </div>
@@ -49,3 +47,43 @@
     </div>
 </div>
 
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        $(function () {                                                    
+            var setupAutoComplete = function () {
+                var $input = $(this);
+                var options =
+                {
+                    source: $input.attr("data-autocomplete-source"),        
+                    select: function (event, ui) {                        
+                        $input = $(this);
+                        $input.val(ui.item.label);
+                        var $form = $input.parents("form:first");           
+                        $form.submit();
+                    }
+                };
+                $input.autocomplete(options);                             
+            };
+            var ajaxSubmit = function () {                                 
+                var $form = $(this);
+                var settings = {                                           
+                    data: $(this).serialize(),                             
+                    url: $(this).attr("action"),                           
+                    type: $(this).attr("method")                            
+                };
+                $.ajax(settings).done(function (result) {                   
+                    var $targetElement = $($form.data("ajax-target"));
+                    var $newContent = $(result);
+                    $($targetElement).replaceWith($newContent);             
+                    $newContent.effect("slide");
+                });
+                return false;
+            };
+            $("#search-filter").each(setupAutoComplete);                  
+            $("#search-form").submit(ajaxSubmit);                          
+        });
+    </script>
+}

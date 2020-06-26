@@ -1,7 +1,6 @@
 ﻿using ImpressDev.DAL;
 using ImpressDev.Infrastructure;
 using ImpressDev.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -11,18 +10,26 @@ namespace ImpressDev.Controllers
     public class CatalogController : Controller
     {
         private ImpressDevContext db = new ImpressDevContext();
-        public ActionResult Index(string categoryName = null)
+        public ActionResult Index(string categoryName = null, string searchQuery = null)
         {
-            var books = new List<Book>();
             if (categoryName == null)
             {
-                books = db.Books.Where(x => !x.Inaccessible).OrderBy(x => Guid.NewGuid()).Take(9).ToList();
+                categoryName = (db.Categories.Find(1)).Name;
             }
+
+            var category = db.Categories.Include("Books").Where(x => x.Name.ToLower() == categoryName).Single();
+
+            var books = category.Books.Where(x => (searchQuery == null ||
+                                  x.Title.ToLower().Contains(searchQuery.ToLower()) ||
+                                  x.SubTitle.ToLower().Contains(searchQuery.ToLower()) ||
+                                  x.Level.ToLower().Contains(searchQuery.ToLower()) ||
+                                  (searchQuery == x.Title + " " + x.SubTitle + " " + x.Level)) &&
+                                  !x.Inaccessible);
+            
+            if (Request.IsAjaxRequest())
+                return PartialView("_PartialBooksList", books);
             else
-            {
-                books = db.Books.Where(x => !x.Inaccessible && x.Category.Name.ToLower() == categoryName).ToList();
-            }
-            return View(books);
+                return View(books);
         }
 
         [ChildActionOnly]
@@ -47,6 +54,18 @@ namespace ImpressDev.Controllers
         {
             var book = db.Books.Find(bookId);
             return View(book);
+        }
+
+        public ActionResult SearchTips(string term, string categoryName)
+        {
+            var category = db.Categories.Include("Books").Where(x => x.Name.ToLower() == categoryName).Single();
+           
+            var books = category.Books.Where(x => !x.Inaccessible && (x.Title.ToLower().Contains(term.ToLower()))
+                                                            || (x.SubTitle.ToLower().Contains(term.ToLower()))
+                                                            || (x.Level.ToLower().Contains(term.ToLower())))
+                                                            .Take(3).Select(x => new { label = x.Title + " " + x.SubTitle + " " + x.Level });
+            
+            return Json(books, JsonRequestBehavior.AllowGet);
         }
     }
 }

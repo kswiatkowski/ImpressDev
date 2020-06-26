@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ImpressDev.Models.Book>
+@using ImpressDev.Infrastructure
+<div class="row" id="booksList">
+    @foreach (var book in Model)
+    {
+        <div class="col-12 col-xl-4">
+            <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = book.BookId })">
+                <div class="o-shop-item">
+                    <img class="o-shop-img" src="@Url.BookPhotoSourcePath(book.PhotoSource)" />
+                    <div class="o-shop-text">
+                        <h2>@book.Title</h2>
+                        <h6>@book.SubTitle - @book.Level - <b>@book.Price zł.</b></h6>
+                        <a href="@Url.Action("AddToCart", "Cart", new { bookId = book.BookId })" class="o-shop-button">+ dodaj do koszyka</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
