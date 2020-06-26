@@ -1,9 +1,9 @@
 ﻿using ImpressDev.DAL;
+using ImpressDev.Infrastructure;
 using ImpressDev.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ImpressDev.Controllers
@@ -28,7 +28,18 @@ namespace ImpressDev.Controllers
         [ChildActionOnly]
         public ActionResult GetCategories()
         {
-            var categories = db.Categories.ToList();
+            ICacheProvider cache = new DefaultCacheProvider();
+
+            List<Category> categories;
+            if (cache.IsSet(Consts.CategoriesCacheKey))
+            {
+                categories = cache.Get(Consts.CategoriesCacheKey) as List<Category>;
+            }
+            else
+            {
+                categories = db.Categories.ToList();
+                cache.Set(Consts.CategoriesCacheKey, categories, 24);
+            }
             return PartialView("_PartialCategoriesLeft", categories);
         }
 
