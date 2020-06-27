@@ -312,6 +312,7 @@
     <Compile Include="Infrastructure\Consts.cs" />
     <Compile Include="Infrastructure\DefaultCacheProvider.cs" />
     <Compile Include="Infrastructure\ICacheProvider.cs" />
+    <Compile Include="Infrastructure\ISessionManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202006240734234_InitialCreate.cs" />
     <Compile Include="Migrations\202006240734234_InitialCreate.designer.cs">
