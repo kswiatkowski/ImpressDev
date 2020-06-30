@@ -1,0 +1,72 @@
+﻿@model ImpressDev.ViewModels.CartViewModel
+@using ImpressDev.Infrastructure
+@using MvcSiteMapProvider.Web.Html
+
+@{
+    ViewBag.Title = "Koszyk";
+}
+
+@foreach (var cartItem in Model.CartItems)
+{
+    <div id="cart-row-@cartItem.Book.BookId">
+        <div>@cartItem.Book.Title - @cartItem.Book.SubTitle - @cartItem.Book.Level</div>
+        <div>Ilość: <span id="cart-book-quantity-@cartItem.Book.BookId">@cartItem.Quantity</span></div>
+        <div>@cartItem.Price zł</div>
+        <div><a class="removeBook" data-id="@cartItem.Book.BookId" href="#">Usuń</a></div>
+    </div>
+}
+
+
+<div id="cart-empty-row" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
+    Twój koszyk jest pusty. Może chcesz coś dodać?
+</div>
+
+
+@if (Model.CartItems.Count > 0)
+{
+    <div id="total-price-row">
+        <span id="total-price-value">Razem: @Model.TotalPrice zł.</span>
+    </div>
+}
+
+
+@if (Model.TotalPrice > 0)
+{
+    <a id="pay-button" href="@Url.Action("Pay","Cart")">Zapłać</a>
+}
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".removeBook").click(function () {
+                var recordDoUsuniecia = $(this).attr("data-id");
+                if (recordDoUsuniecia != '') {
+                    $.post("/Cart/RemoveFromCart", { "bookId": recordDoUsuniecia },
+                        function (response) {
+                            if (response.RemoveBookQuantity == 0) {
+                                $('#cart-row-' + response.RemoveBookId).fadeOut('slow', function () {
+                                    if (response.CartItemsQuantity == 0) {
+                                        $("#cart-empty-row").removeClass("hidden");
+                                    }
+                                });
+                            }
+                            else {
+                                $('#cart-book-quantity-' + response.RemoveBookId).text(response.RemoveBookQuantity);
+                            }
+                            if (response.CartItemsQuantity == 0) {
+                                $('#pay-button').addClass('hidden');
+                                $('#total-price-value').addClass('hidden');
+                            }
+                            $('#total-price-value').text('Razem: ' + response.CartTotalPrice + ' zł.');
+                            $('#cart-quantity-header').text(response.CartItemsQuantity);
+                        });
+                    return false;
+                }
+            });
+        });
+    </script>
+}

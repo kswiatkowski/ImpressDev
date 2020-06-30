@@ -44,10 +44,10 @@
                                 <a href="#" class="nav-link o-menu-item-social">GitHub</a>
                             </li>
                             <li class="nav-item px-lg-2 px-xl-3">
-                                <a href="#" class="nav-link o-menu-item">Koszyk</a>
+                                <a href="#" class="nav-link o-menu-item">Profil</a>
                             </li>
                             <li class="nav-item px-lg-2 px-xl-3">
-                                <a href="#" class="nav-link o-menu-item">Profil</a>
+                                <a href="@Url.Action("Index", "Cart")" class="nav-link o-menu-item">Koszyk (<spam id="cart-quantity-header">@Html.Action("GetCartQuantity", "Cart")</spam>)</a>
                             </li>
                         </ul>
                     </div>
