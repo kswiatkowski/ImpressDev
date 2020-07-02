@@ -7,6 +7,10 @@
     <mvcSiteMapNode title="Category" controller="Catalog" action="Index" dynamicNodeProvider="ImpressDev.Infrastructure.CategoriesDynamicNodeProvider, ImpressDev">
       <mvcSiteMapNode title="Book" controller="Catalog" action="Details" dynamicNodeProvider="ImpressDev.Infrastructure.BooksDynamicNodeProvider, ImpressDev" />
     </mvcSiteMapNode>
+    <mvcSiteMapNode title="Koszyk" controller="Cart" action="Index">
+      <mvcSiteMapNode title="Dane zamówienia" controller="Cart" action="OrderCheckout" />
+      <mvcSiteMapNode title="Potwierdzenie zamwówienia" controller="Cart" action="OrderConfirm" />
+    </mvcSiteMapNode>
   </mvcSiteMapNode>
 
 </mvcSiteMap>

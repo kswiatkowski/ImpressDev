@@ -231,9 +231,8 @@ body {
     margin: 30px 0 10px 0;
 }
 
-.o-catalog {
+.o-page {
     padding: 20px 0 50px 0;
-    text-align: center;
 }
 
 
@@ -389,10 +388,9 @@ body {
     font-weight: 600;
 }
 
-.o-cart-heading {
+.o-page-heading {
     font-size: 60px;
     color: #ffc301;
-    padding-top: 50px;
     padding-bottom: 30px;
     text-align: center;
 }
@@ -472,7 +470,7 @@ body {
 }
 
 @media (max-width: 991px) {
-    .o-cart-heading {
+    .o-page-heading {
         font-size: 40px;
     }
     
@@ -524,4 +522,8 @@ body {
 
 .hidden {
     display: none;
+}
+
+.o-center {
+    text-align: center;
 }

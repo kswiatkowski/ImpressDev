@@ -3,75 +3,64 @@
 @using MvcSiteMapProvider.Web.Html
 
 @{
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
     ViewBag.Title = "Koszyk";
 }
 
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 o-cart-heading">
-                Koszyk
+<div class="container">
+    @foreach (var cartItem in Model.CartItems)
+    {
+        <div id="cart-row-@cartItem.Book.BookId" class="row o-cart-item">
+            <div class="col-lg-2 o-cart-div-img">
+                <img class="o-cart-img" src="@Url.BookPhotoSourcePath(cartItem.Book.PhotoSource)" />
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="o-cart-text">
+                    @cartItem.Book.Title - @cartItem.Book.SubTitle - @cartItem.Book.Level
+                </div>
+                <div class="o-cart-details">
+                    Druk: @cartItem.Book.Cover
+                </div>
+                <div class="o-cart-details">
+                    Cena: @cartItem.Book.Price zł.
+                </div>
+            </div>
+            <div class="col-lg-2 align-self-center">
+                <div class="o-cart-quantity">
+                    Liczba: <span id="cart-book-quantity-@cartItem.Book.BookId">@cartItem.Quantity szt.</span>
+                </div>
+            </div>
+            <div class="col-lg-2 align-self-center">
+                <div class="o-cart-del-div">
+                    <a class="removeBook o-cart-del" data-id="@cartItem.Book.BookId" href="#">Usuń</a>
+                </div>
             </div>
         </div>
 
-        @foreach (var cartItem in Model.CartItems)
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        <div id="cart-empty-row" class="col-12 o-cart-empty @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text>hidden</text> } ">
+            Twój koszyk jest pusty. Może chcesz coś dodać?
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (Model.CartItems.Count > 0)
         {
-            <div id="cart-row-@cartItem.Book.BookId" class="row o-cart-item">
-                <div class="col-lg-2 o-cart-div-img">
-                    <img class="o-cart-img" src="@Url.BookPhotoSourcePath(cartItem.Book.PhotoSource)" />
+            <div class="col-lg-3 offset-lg-9">
+                <div id="total-price-row" class="o-cart-total-price">
+                    <span id="total-price-value">Razem: @Model.TotalPrice zł.</span>
                 </div>
-                <div class="col-lg-6 align-self-center">
-                    <div class="o-cart-text">
-                        @cartItem.Book.Title - @cartItem.Book.SubTitle - @cartItem.Book.Level
-                    </div>
-                    <div class="o-cart-details">
-                        Druk: @cartItem.Book.Cover
-                    </div>
-                    <div class="o-cart-details">
-                        Cena: @cartItem.Book.Price
-                    </div>
-                </div>
-                <div class="col-lg-2 align-self-center">
-                    <div class="o-cart-quantity">
-                        Ilość: <span id="cart-book-quantity-@cartItem.Book.BookId">@cartItem.Quantity</span>
-                    </div>
-                </div>
-                <div class="col-lg-2 align-self-center">
-                    <div class="o-cart-del-div">
-                        <a class="removeBook o-cart-del" data-id="@cartItem.Book.BookId" href="#">Usuń</a>
-                    </div>
+                <div class="o-cart-pay-div">
+                    <a id="pay-button" class="o-cart-pay" href="@Url.Action("Pay","Cart")">Złóż zamówinie</a>
                 </div>
             </div>
-
         }
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div id="cart-empty-row" class="col-12 o-cart-empty @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text>hidden</text> } ">
-                    Twój koszyk jest pusty. Może chcesz coś dodać?
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            @if (Model.CartItems.Count > 0)
-            {
-                <div class="col-lg-3 offset-lg-9">
-                    <div id="total-price-row" class="o-cart-total-price">
-                        <span id="total-price-value">Razem: @Model.TotalPrice zł.</span>
-                    </div>
-                    <div class="o-cart-pay-div">
-                        <a id="pay-button" class="o-cart-pay" href="@Url.Action("Pay","Cart")">Złóż zamówinie</a>
-                    </div>
-                </div>
-            }
-        </div>
     </div>
 </div>
 
@@ -94,7 +83,7 @@
                                 });
                             }
                             else {
-                                $('#cart-book-quantity-' + response.RemoveBookId).text(response.RemoveBookQuantity);
+                                $('#cart-book-quantity-' + response.RemoveBookId).text(response.RemoveBookQuantity + ' szt.');
                             }
                             if (response.CartItemsQuantity == 0) {
                                 $('#pay-button').addClass('hidden');
