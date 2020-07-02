@@ -241,6 +241,12 @@ body {
     margin-top: 15px;
 }
 
+@media (max-width: 991px) {
+    .o-category-nav {
+        margin-top: 0px;
+    }
+}
+
 .o-category-item {
     color: #233040;
     transition: all 0.5s;
@@ -250,6 +256,12 @@ body {
         color: #ffc301;
         text-decoration: none;
     }
+
+@media (max-width: 991px) {
+    .o-category-item {
+        font-size: 14px;
+    }
+}
 
 .o-category-block {
     display: inline;
@@ -274,6 +286,12 @@ body {
     margin: 10px 0px 20px 0px;
 }
 
+@media (max-width: 991px) {
+    .o-nav-track {
+        font-size: 14px;
+    }
+}
+
 .o-search-form {
     width: 60%;
     margin: 24px 0px 0 10px;
@@ -287,9 +305,10 @@ body {
     width: 90%;
     padding-left: 5px;
 }
-.o-search-input:focus {
-    outline: none;
-}
+
+    .o-search-input:focus {
+        outline: none;
+    }
 
 .o-search-submit {
     width: 20px;
@@ -300,9 +319,9 @@ body {
     background: transparent url(Images/search-icon.png) no-repeat;
 }
 
-.o-search-submit:focus {
-    outline: none;
-}
+    .o-search-submit:focus {
+        outline: none;
+    }
 
 @media (max-width: 1199px) {
     .o-search-form {
@@ -378,7 +397,7 @@ body {
     }
 
 .o-details-desc {
-    padding: 0 0 0 15px;
+    padding: 0 0 40px 15px;
     text-align: left;
     font-weight: 300;
     margin-top: 20px;
@@ -473,7 +492,7 @@ body {
     .o-page-heading {
         font-size: 40px;
     }
-    
+
     .o-cart-item {
         padding: 10px;
     }
@@ -519,6 +538,76 @@ body {
         font-size: 16px;
     }
 }
+
+.o-login-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .o-login-table input[type=text] {
+        width: 280px;
+    }
+
+    .o-login-table input[type=password] {
+        width: 280px;
+    }
+
+    .o-login-table label {
+        margin-top: 7px;
+    }
+
+.o-login-btn-div {
+    text-align: center;
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+
+.o-login-btn {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+    padding: 4px 32px 4px 32px;
+    background-color: transparent;
+    border: 1px solid black;
+    transition: all 0.5s;
+    color: black;
+}
+
+    .o-login-btn:hover {
+        color: #ffc301;
+        border: 1px solid #ffc301;
+        text-decoration: none;
+    }
+
+
+
+
+@media (max-width: 991px) {
+    .o-login-table {
+        font-size: 14px;
+    }
+
+        .o-login-table input[type=text] {
+            width: 250px;
+        }
+
+        .o-login-table input[type=password] {
+            width: 250px;
+        }
+
+    .o-login-btn {
+        font-size: 14px;
+    }
+
+    .o-login-register-btn {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
 
 .hidden {
     display: none;
