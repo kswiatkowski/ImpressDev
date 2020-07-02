@@ -595,11 +595,11 @@ body {
     }
 
         .o-login-table input[type=text] {
-            width: 250px;
+            width: 240px;
         }
 
         .o-login-table input[type=password] {
-            width: 250px;
+            width: 240px;
         }
 
     .o-login-btn {

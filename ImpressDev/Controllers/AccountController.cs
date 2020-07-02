@@ -1,8 +1,4 @@
 ﻿using ImpressDev.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ImpressDev.Controllers
@@ -17,6 +13,21 @@ namespace ImpressDev.Controllers
 
         [HttpPost]
         public ActionResult Login(LoginViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid == false)
+                return View(model);
+            else
+                return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register( RegisterViewModel model)
         {
             if (ModelState.IsValid == false)
                 return View(model);

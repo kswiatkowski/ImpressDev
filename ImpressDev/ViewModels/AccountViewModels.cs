@@ -6,11 +6,12 @@ namespace ImpressDev.ViewModels
     {
         [Required(ErrorMessage = "Wprowadź adres email")]
         [EmailAddress(ErrorMessage = "Błędny format adresu email")]
+        [Display(Name = "Email:")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Wprowadź hasło")]
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Display(Name = "Hasło:")]
         public string Password { get; set; }
 
         [Display(Name = "Zapamiętaj dane logowania")]
@@ -21,15 +22,16 @@ namespace ImpressDev.ViewModels
     {
         [Required(ErrorMessage = "Wprowadź adres email")]
         [EmailAddress(ErrorMessage = "Błędny format adresu email")]
+        [Display(Name = "Email:")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Wprowadź hasło")]
-        [StringLength(30, ErrorMessage = "Hasło musi mieć od 5 do 30 znaków", MinimumLength = 5)]
+        [StringLength(30, ErrorMessage = "Hasło musi mieć od 2 do 30 znaków", MinimumLength = 2)]
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Display(Name = "Hasło:")]
         public string Password { get; set; }
 
-        [Display(Name = "Potwierdź hasło")]
+        [Display(Name = "Potwierdź hasło:")]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Hasło i potwierdzenie hasła muszą być takie same")]
         public string ConfirmPassword { get; set; }

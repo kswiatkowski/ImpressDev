@@ -1,13 +1,13 @@
-﻿@model ImpressDev.ViewModels.LoginViewModel
+﻿@model ImpressDev.ViewModels.RegisterViewModel
 @{
-    ViewBag.Title = "Zaloguj";
+    ViewBag.Title = "Zarejestruj";
     Layout = "~/Views/Shared/_PageLayout.cshtml";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            @using (@Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            @using (@Html.BeginForm("Register", "Account"))
             {
                 @Html.AntiForgeryToken() //checking if the request comes from our site
 
@@ -36,13 +36,19 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="3">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.Remember, new { @checked = "checked" })
-                                @Html.LabelFor(m => m.Remember)
+                        <td>@Html.LabelFor(o => o.ConfirmPassword)</td>
+                        <td>
+                            @Html.PasswordFor(o => o.ConfirmPassword)
+                            <div class="login-validation-message o-login-validation-msg">
+                                @Html.ValidationMessageFor(o => o.ConfirmPassword)
                             </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
                             <div class="o-login-btn-div">
-                                <input type="submit" value="Zaloguj" class="o-login-btn" />
+                                <input type="submit" value="Zarejestruj" class="o-login-btn" />
                             </div>
                         </td>
                     </tr>
@@ -51,7 +57,7 @@
 
             <div style="text-align: center;">
                 <div class="o-login-register-btn">
-                    Nie masz jeszcze konta? <a href="@Url.Action("Register")">Zarejestruj się!</a>
+                    Masz już konto? <a href="@Url.Action("Login")">Zaloguj się!</a>
                 </div>
 
             </div>
