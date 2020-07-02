@@ -556,6 +556,13 @@ body {
         margin-top: 7px;
     }
 
+.o-login-validation-msg {
+    font-weight: 300;
+    color: red;
+    padding-left: 1px;
+}
+
+
 .o-login-btn-div {
     text-align: center;
     padding-bottom: 40px;

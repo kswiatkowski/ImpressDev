@@ -20,7 +20,7 @@
                         <td>@Html.LabelFor(o => o.Email)</td>
                         <td>
                             @Html.TextBoxFor(o => o.Email)
-                            <div class="login-validation-message">
+                            <div class="login-validation-message o-login-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Email)
                             </div>
                         </td>
@@ -29,7 +29,7 @@
                         <td>@Html.LabelFor(o => o.Password)</td>
                         <td>
                             @Html.PasswordFor(o => o.Password)
-                            <div class="login-validation-message">
+                            <div class="login-validation-message o-login-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Password)
                             </div>
                         </td>
@@ -44,7 +44,7 @@
                             <div class="o-login-btn-div">
                                 <input type="submit" value="Zaloguj" class="o-login-btn" />
                             </div>
-                            
+
                         </td>
                     </tr>
                 </table>
@@ -54,10 +54,17 @@
                 <div class="o-login-register-btn">
                     Nie masz jeszcze konta? <a href="@Url.Action("Register")">Zarejestruj się!</a>
                 </div>
-                
+
             </div>
 
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
 
