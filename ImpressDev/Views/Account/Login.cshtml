@@ -11,9 +11,10 @@
             {
                 @Html.AntiForgeryToken() //checking if the request comes from our site
 
-                <div id="login-error">
-                    @Html.ValidationMessage("loginerror", "")
-                </div>
+            <div id="login-error">
+                @Html.ValidationMessage("loginerror", "")
+                @Html.ValidationSummary()
+            </div>
 
                 <table id="login-table" class="o-login-table">
                     <tr>

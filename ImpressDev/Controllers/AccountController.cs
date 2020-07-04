@@ -47,19 +47,48 @@ namespace ImpressDev.Controllers
             }
         }
 
+        // GET: /Account/Login
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
+        // POST: /Account/Login
         [HttpPost]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid == false)
+            if (!ModelState.IsValid)
+            {
                 return View(model);
-            else
-                return RedirectToAction("Index", "Home");
+            }
+
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.Remember, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.Remember });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Nieudana próba logowania.");
+                    return View(model);
+            }
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()

@@ -617,10 +617,17 @@ body {
     }
 
 .validation-summary-errors {
-    font-weight: 300;
     color: red;
     text-align: center;
 }
+
+.validation-summary-errors li {
+    list-style-type: none;
+}
+
+    .validation-summary-errors ul {
+        padding-inline-start: 0px;
+    }
 
 @media (max-width: 991px) {
     .o-login-table {
