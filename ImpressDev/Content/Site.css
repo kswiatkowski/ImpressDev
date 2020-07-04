@@ -12,6 +12,36 @@ body {
     font-weight: 600;
 }
 
+.o-login-bar {
+    background-color: black;
+    text-align: right;
+    padding: 4px 0px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    float: right;
+}
+
+    .navbar-nav li {
+        padding-left: 15px;
+    }
+
+    .navbar-nav a {
+        color: #9d9d9d;
+        font-size: 16px;
+    }
+
+    .navbar-nav a:hover {
+        color: #9d9d9d;
+    }
+
+@media (max-width: 991px) {
+    .navbar-nav a {
+        font-size: 14px;
+    }
+}
+
 .o-navbar {
     background-color: #233040;
 }
@@ -586,8 +616,11 @@ body {
         text-decoration: none;
     }
 
-
-
+.validation-summary-errors {
+    font-weight: 300;
+    color: red;
+    text-align: center;
+}
 
 @media (max-width: 991px) {
     .o-login-table {
@@ -609,12 +642,11 @@ body {
     .o-login-register-btn {
         font-size: 14px;
     }
+
+    .validation-summary-errors {
+        font-size: 14px;
+    }
 }
-
-
-
-
-
 
 .hidden {
     display: none;

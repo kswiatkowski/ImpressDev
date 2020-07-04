@@ -344,3 +344,6 @@ healthchecksdb
 /ImpressDev/Migrations/202006240744370_test migration.resx
 /ImpressDev/Migrations/202006240744370_test migration.Designer.cs
 /ImpressDev/Migrations/202006240744370_test migration.cs
+/ImpressDev/Migrations/202007021352240_add-asp-identity.cs
+/ImpressDev/Migrations/202007021352240_add-asp-identity.Designer.cs
+/ImpressDev/Migrations/202007021352240_add-asp-identity.resx
