@@ -1,9 +1,11 @@
-﻿using ImpressDev.DAL;
+﻿using ImpressDev.App_Start;
+using ImpressDev.DAL;
 using ImpressDev.Infrastructure;
+using ImpressDev.Models;
 using ImpressDev.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -49,6 +51,73 @@ namespace ImpressDev.Controllers
 
             var result = new CartRemoveViewModel() { RemoveBookId = bookId, RemoveBookQuantity = bookQuantity, CartItemsQuantity = cartQuantity, CartTotalPrice = cartPrice };
             return Json(result);
+        }
+
+        public async Task<ActionResult> Pay()
+        {
+            if(Request.IsAuthenticated)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+                var order = new Order
+                {
+                    Name = user.UserData.Name,
+                    Surname = user.UserData.Surname,
+                    Street = user.UserData.Street,
+                    City = user.UserData.City,
+                    PostalCode = user.UserData.PostalCode,
+                    Email = user.UserData.Email,
+                    PhoneNumber = user.UserData.Phone
+                };
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Pay", "Cart") });
+            }
+        }
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Pay(Order orderDetails)
+        {
+            if(ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                var newOrder = cartMenager.CreateNewOrder(orderDetails, userId);
+
+                //update user data
+                var user = await UserManager.FindByIdAsync(userId);
+                TryUpdateModel(user.UserData);
+                await UserManager.UpdateAsync(user);
+
+                cartMenager.CleanCart();
+
+                return RedirectToAction("ConfirmOrder");
+            }
+            else
+            {
+                return View(orderDetails);
+            }
+        }
+
+        public ActionResult ConfirmOrder()
+        {
+            return View();
         }
     }
 }

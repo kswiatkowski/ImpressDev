@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-8 offset-lg-2">
-            @using (@Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            @using (@Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken() //checking if the request comes from our site
 
@@ -16,12 +16,12 @@
                 @Html.ValidationSummary()
             </div>
 
-                <table id="login-table" class="o-login-table">
+                <table id="login-table" class="o-form-table">
                     <tr>
                         <td>@Html.LabelFor(o => o.Email)</td>
                         <td>
                             @Html.TextBoxFor(o => o.Email)
-                            <div class="login-validation-message o-login-validation-msg">
+                            <div class="login-validation-message o-form-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Email)
                             </div>
                         </td>
@@ -30,7 +30,7 @@
                         <td>@Html.LabelFor(o => o.Password)</td>
                         <td>
                             @Html.PasswordFor(o => o.Password)
-                            <div class="login-validation-message o-login-validation-msg">
+                            <div class="login-validation-message o-form-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Password)
                             </div>
                         </td>
@@ -42,8 +42,8 @@
                                 @Html.CheckBoxFor(m => m.Remember, new { @checked = "checked" })
                                 @Html.LabelFor(m => m.Remember)
                             </div>
-                            <div class="o-login-btn-div">
-                                <input type="submit" value="Zaloguj" class="o-login-btn" />
+                            <div class="o-form-btn-div">
+                                <input type="submit" value="Zaloguj" class="o-form-btn" />
                             </div>
                         </td>
                     </tr>

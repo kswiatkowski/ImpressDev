@@ -18,26 +18,26 @@ body {
     padding: 4px 0px;
 }
 
-.navbar-nav {
-    flex-direction: row;
-    float: right;
-}
-
-    .navbar-nav li {
-        padding-left: 15px;
+    .o-login-bar .navbar-nav {
+        flex-direction: row;
+        float: right;
     }
 
-    .navbar-nav a {
-        color: #9d9d9d;
-        font-size: 16px;
-    }
+        .o-login-bar .navbar-nav li {
+            padding-left: 15px;
+        }
 
-    .navbar-nav a:hover {
-        color: #9d9d9d;
-    }
+        .o-login-bar .navbar-nav a {
+            color: #9d9d9d;
+            font-size: 16px;
+        }
+
+            .o-login-bar .navbar-nav a:hover {
+                color: #9d9d9d;
+            }
 
 @media (max-width: 991px) {
-    .navbar-nav a {
+    .o-login-bar .navbar-nav a {
         font-size: 14px;
     }
 }
@@ -109,6 +109,10 @@ body {
 
     .o-baner-text-3 {
         font-size: 16px;
+    }
+
+    .o-logo {
+        height: 45px;
     }
 }
 
@@ -521,6 +525,7 @@ body {
 @media (max-width: 991px) {
     .o-page-heading {
         font-size: 40px;
+        line-height: 110%;
     }
 
     .o-cart-item {
@@ -569,37 +574,37 @@ body {
     }
 }
 
-.o-login-table {
+.o-form-table {
     margin-left: auto;
     margin-right: auto;
 }
 
-    .o-login-table input[type=text] {
+    .o-form-table input[type=text] {
         width: 280px;
     }
 
-    .o-login-table input[type=password] {
+    .o-form-table input[type=password] {
         width: 280px;
     }
 
-    .o-login-table label {
+    .o-form-table label {
         margin-top: 7px;
     }
 
-.o-login-validation-msg {
+.o-form-validation-msg {
     font-weight: 300;
     color: red;
     padding-left: 1px;
 }
 
 
-.o-login-btn-div {
+.o-form-btn-div {
     text-align: center;
     padding-bottom: 40px;
     padding-top: 10px;
 }
 
-.o-login-btn {
+.o-form-btn {
     font-size: 16px;
     text-align: center;
     font-weight: 300;
@@ -610,7 +615,7 @@ body {
     color: black;
 }
 
-    .o-login-btn:hover {
+    .o-form-btn:hover {
         color: #ffc301;
         border: 1px solid #ffc301;
         text-decoration: none;
@@ -621,28 +626,28 @@ body {
     text-align: center;
 }
 
-.validation-summary-errors li {
-    list-style-type: none;
-}
+    .validation-summary-errors li {
+        list-style-type: none;
+    }
 
     .validation-summary-errors ul {
         padding-inline-start: 0px;
     }
 
 @media (max-width: 991px) {
-    .o-login-table {
+    .o-form-table {
         font-size: 14px;
     }
 
-        .o-login-table input[type=text] {
+        .o-form-table input[type=text] {
             width: 240px;
         }
 
-        .o-login-table input[type=password] {
+        .o-form-table input[type=password] {
             width: 240px;
         }
 
-    .o-login-btn {
+    .o-form-btn {
         font-size: 14px;
     }
 
@@ -654,6 +659,12 @@ body {
         font-size: 14px;
     }
 }
+
+.o-checkout-table .field-validation-error {
+    font-weight: 300;
+    color: red;
+}
+
 
 .hidden {
     display: none;

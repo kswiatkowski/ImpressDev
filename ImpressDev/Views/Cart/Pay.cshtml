@@ -1,0 +1,103 @@
+﻿@model ImpressDev.Models.Order
+@{
+    ViewBag.Title = "Podsumowanie zamówienia";
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2">
+            @using (@Html.BeginForm("Pay", "Cart"))
+            {
+                <table id="checkout-address-table" class="o-form-table">
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Name, "Imię:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Name)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Name)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Surname, "Nazwisko:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Surname)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Surname)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Street, "Ulica:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Street)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Street)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.City, "Miasto:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.City)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.City)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.PostalCode, "Kod pocztowy:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.PostalCode)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.PostalCode)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.PhoneNumber, "Numer telefonu:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.PhoneNumber)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.PhoneNumber)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Email, "Email:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Email)
+                            <div class="login-validation-message o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Email)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Comment">Uwagi:</label></td>
+                        <td>
+                            <textarea cols="36" rows="3" name="Comment">@Model.Comment</textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                @Html.ValidationSummary()
+
+                <hr style="margin-bottom: 50px;" />
+
+                <div class="o-form-btn-div">
+                    <a class="o-form-btn" href="">Wróć</a>
+                    <input type="submit" value="Potwierdź" class="o-form-btn" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

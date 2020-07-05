@@ -372,6 +372,10 @@
     <Compile Include="Migrations\202007021352240_add-asp-identity.designer.cs">
       <DependentUpon>202007021352240_add-asp-identity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007041214218_edit-order-model.cs" />
+    <Compile Include="Migrations\202007041214218_edit-order-model.designer.cs">
+      <DependentUpon>202007041214218_edit-order-model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -402,6 +406,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_PartialLoginBar.cshtml" />
+    <Content Include="Views\Cart\Pay.cshtml" />
+    <Content Include="Views\Cart\ConfirmOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -433,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007021352240_add-asp-identity.resx">
       <DependentUpon>202007021352240_add-asp-identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007041214218_edit-order-model.resx">
+      <DependentUpon>202007041214218_edit-order-model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

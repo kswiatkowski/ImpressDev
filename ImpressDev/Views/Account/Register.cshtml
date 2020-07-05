@@ -16,12 +16,12 @@
                 @Html.ValidationSummary()
             </div>
 
-                <table id="login-table" class="o-login-table">
+                <table id="login-table" class="o-form-table">
                     <tr>
                         <td>@Html.LabelFor(o => o.Email)</td>
                         <td>
                             @Html.TextBoxFor(o => o.Email)
-                            <div class="login-validation-message o-login-validation-msg">
+                            <div class="login-validation-message o-form-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Email)
                             </div>
                         </td>
@@ -30,7 +30,7 @@
                         <td>@Html.LabelFor(o => o.Password)</td>
                         <td>
                             @Html.PasswordFor(o => o.Password)
-                            <div class="login-validation-message o-login-validation-msg">
+                            <div class="login-validation-message o-form-validation-msg">
                                 @Html.ValidationMessageFor(o => o.Password)
                             </div>
                         </td>
@@ -40,7 +40,7 @@
                         <td>@Html.LabelFor(o => o.ConfirmPassword)</td>
                         <td>
                             @Html.PasswordFor(o => o.ConfirmPassword)
-                            <div class="login-validation-message o-login-validation-msg">
+                            <div class="login-validation-message o-form-validation-msg">
                                 @Html.ValidationMessageFor(o => o.ConfirmPassword)
                             </div>
                         </td>
@@ -48,8 +48,8 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <div class="o-login-btn-div">
-                                <input type="submit" value="Zarejestruj" class="o-login-btn" />
+                            <div class="o-form-btn-div">
+                                <input type="submit" value="Zarejestruj" class="o-form-btn" />
                             </div>
                         </td>
                     </tr>

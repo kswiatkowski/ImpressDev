@@ -96,7 +96,7 @@ namespace ImpressDev.Infrastructure
         {
             var cart = GetCart();
             newOrder.DateAdded = DateTime.Now;
-            //newOrder.userId = userId
+            newOrder.UserId = userId;
             db.Orders.Add(newOrder);
 
             if (newOrder.OrderItems == null)

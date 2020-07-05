@@ -23,7 +23,7 @@ namespace ImpressDev.Models
         public string Phone { get; set; }
 
         [Display(Name = "Email")]
-        [EmailAddress(ErrorMessage = "Błędny format adresu email")]
+        [EmailAddress(ErrorMessage = "Błędny format adresu email.")]
         public string Email { get; set; }
     }
 }

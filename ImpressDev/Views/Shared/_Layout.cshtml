@@ -26,20 +26,20 @@
                         <img class="o-logo" src="@Url.Content("~/Content/Images/icon-white.png")" />
                     </a>
 
-                    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#mainmenu" style="color: aqua;"><span class="navbar-toggler-icon"></span></button>
+                    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#mainmenu"><span class="navbar-toggler-icon"></span></button>
 
                     <div class="collapse navbar-collapse" id="mainmenu">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item px-lg-2 px-xl-3">
+                            <li class="nav-item px-lg-3">
                                 <a href="@Url.Action("Index", "Home")" class="nav-link o-menu-item">Start</a>
                             </li>
-                            <li class="nav-item px-lg-2 px-xl-3">
+                            <li class="nav-item px-lg-3">
                                 <a href="https://github.com/kswiatkowski/ImpressDev___BookShop_in_ASP.NET_MVC" target="_blank" class="nav-link o-menu-item-social">GitHub</a>
                             </li>
-                            <li class="nav-item px-lg-2 px-xl-3">
+                            <li class="nav-item px-lg-3">
                                 <a href="#" class="nav-link o-menu-item">Profil</a>
                             </li>
-                            <li class="nav-item px-lg-2 px-xl-3">
+                            <li class="nav-item px-lg-3">
                                 <a href="@Url.Action("Index", "Cart")" class="nav-link o-menu-item">Koszyk (<spam id="cart-quantity-header">@Html.Action("GetCartQuantity", "Cart")</spam>)</a>
                             </li>
                         </ul>
