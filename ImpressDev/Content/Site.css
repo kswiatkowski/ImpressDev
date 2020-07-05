@@ -591,13 +591,6 @@ body {
         margin-top: 7px;
     }
 
-.o-form-validation-msg {
-    font-weight: 300;
-    color: red;
-    padding-left: 1px;
-}
-
-
 .o-form-btn-div {
     text-align: center;
     padding-bottom: 40px;
@@ -621,19 +614,6 @@ body {
         text-decoration: none;
     }
 
-.validation-summary-errors {
-    color: red;
-    text-align: center;
-}
-
-    .validation-summary-errors li {
-        list-style-type: none;
-    }
-
-    .validation-summary-errors ul {
-        padding-inline-start: 0px;
-    }
-
 @media (max-width: 991px) {
     .o-form-table {
         font-size: 14px;
@@ -654,10 +634,36 @@ body {
     .o-login-register-btn {
         font-size: 14px;
     }
+}
 
-    .validation-summary-errors {
-        font-size: 14px;
-    }
+
+
+
+
+
+
+
+.validation-summary-errors {
+    color: red;
+    text-align: center;
+}
+
+.o-pass-validation-msg {
+    color: red;
+    text-align: center;
+}
+
+.validation-summary-errors li {
+    list-style-type: none;
+}
+
+.validation-summary-errors ul {
+    padding-inline-start: 0px;
+}
+
+.o-pass-validation-msg-2 .field-validation-error {
+    font-weight: 300;
+    color: red;
 }
 
 .o-checkout-table .field-validation-error {
@@ -665,6 +671,43 @@ body {
     color: red;
 }
 
+.o-form-validation-msg {
+    font-weight: 300;
+    color: red;
+    padding-left: 1px;
+}
+
+.manage-message {
+    text-align: center;
+    color: green;
+    font-size: 16px;
+}
+
+@media (max-width: 991px) {
+    .validation-summary-errors {
+        font-size: 14px;
+    }
+
+    .field-validation-error {
+        font-size: 14px;
+    }
+
+    .manage-message {
+        font-size: 14px;
+    }
+}
+
+.o-manage-heading {
+    font-size: 35px;
+    font-weight: 300;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .o-manage-heading {
+        font-size: 25px;
+    }
+}
 
 .hidden {
     display: none;

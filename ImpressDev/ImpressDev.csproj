@@ -337,6 +337,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\ImpressDevContext.cs" />
     <Compile Include="DAL\ImpressDevInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -390,6 +391,7 @@
     <Compile Include="ViewModels\CartRemoveViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -408,6 +410,7 @@
     <Content Include="Views\Shared\_PartialLoginBar.cshtml" />
     <Content Include="Views\Cart\Pay.cshtml" />
     <Content Include="Views\Cart\ConfirmOrder.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

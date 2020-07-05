@@ -11,11 +11,11 @@
       <mvcSiteMapNode title="Dane zamówienia" controller="Cart" action="OrderCheckout" />
       <mvcSiteMapNode title="Potwierdzenie zamwówienia" controller="Cart" action="OrderConfirm" />
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Konto" controller="Manage" action="Index">
+    <mvcSiteMapNode title="Moje konto" controller="Manage" action="Index">
       <mvcSiteMapNode title="Rejestracja" controller="Account" action="Register" />
       <mvcSiteMapNode title="Logowanie" controller="Account" action="Login" />
       <mvcSiteMapNode title="Edycja kursu" controller="Manage" action="DodajKurs" />
-      <mvcSiteMapNode title="Twoje dane" controller="Manage" action="Index" />
+      <mvcSiteMapNode title="Moje dane" controller="Manage" action="Index" />
       <mvcSiteMapNode title="Zamówienia" controller="Manage" action="ListaZamowien" />
     </mvcSiteMapNode>
   </mvcSiteMapNode>
