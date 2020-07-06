@@ -1,9 +1,13 @@
 ﻿using ImpressDev.App_Start;
+using ImpressDev.DAL;
 using ImpressDev.Models;
 using ImpressDev.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +17,7 @@ namespace ImpressDev.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        private ImpressDevContext db = new ImpressDevContext();
         public enum ManageMessageId
         {
             ChangePasswordSuccess,
@@ -136,6 +141,37 @@ namespace ImpressDev.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
+        }
+
+        public ActionResult OrdersList()
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Order> userOrders;
+
+            if (isAdmin)
+            {
+                userOrders = db.Orders.Include("OrderItems").OrderByDescending(x => x.DateAdded).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.Orders.Where(x => x.UserId == userId).Include("OrderItems").OrderByDescending(x => x.DateAdded).ToArray();
+            }
+            return View(userOrders);
+        }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public OrderStatus ChangeOrderStatus(Order order)
+        {
+            Order orderToModify = db.Orders.Find(order.OrderId);
+            orderToModify.OrderStatus = order.OrderStatus;
+            db.SaveChanges();
+
+            return order.OrderStatus;
         }
     }
 }

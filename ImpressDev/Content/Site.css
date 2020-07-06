@@ -461,6 +461,15 @@ body {
     width: 100%;
 }
 
+.o-cart-book-link {
+    color: black;
+}
+
+.o-cart-book-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
 .o-cart-text {
     padding: 10px 0 10px 0;
     font-size: 20px;
@@ -572,6 +581,14 @@ body {
     .o-cart-empty {
         font-size: 16px;
     }
+
+    .o-cart-total-price {
+        font-size: 14px;
+    }
+
+    .o-cart-book-link {
+        font-size: 14px;
+    }
 }
 
 .o-form-table {
@@ -636,13 +653,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-
 .validation-summary-errors {
     color: red;
     text-align: center;
@@ -706,6 +716,98 @@ body {
 @media (max-width: 991px) {
     .o-manage-heading {
         font-size: 25px;
+    }
+}
+
+.o-manage-bar-btn-div {
+    text-align: center;
+    padding-bottom: 60px;
+    padding-top: 10px;
+}
+
+.o-manage-bar-btn {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 300;
+    padding: 4px 32px 4px 32px;
+    background-color: transparent;
+    border: 1px solid black;
+    transition: all 0.5s;
+    color: black;
+}
+
+    .o-manage-bar-btn:hover {
+        color: #ffc301;
+        border: 1px solid #ffc301;
+        text-decoration: none;
+    }
+
+@media (max-width: 991px) {
+    .o-manage-bar-btn {
+        font-size: 14px;
+        padding: 4px 10px 4px 10px;
+    }
+}
+
+.o-order-group {
+    border: 0px solid black;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.o-order-text-bold {
+    font-weight: 600;
+}
+
+.o-order-text-light {
+    font-weight: 300;
+}
+
+.o-order-item-div {
+    padding: 15px;
+}
+
+.o-order-item {
+    padding: 10px;
+    background-color: #f2f2f2;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.o-order-book-link {
+    color: black;
+}
+
+.o-order-book-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.o-order-empty {
+    font-size: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-weight: 300;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .o-order-group {
+        font-size: 14px;
+    }
+
+    .o-order-br {
+        display: none;
+    }
+
+    .o-order-empty {
+        font-size: 17px;
     }
 }
 
