@@ -17,6 +17,7 @@
         protected override void Seed(ImpressDev.DAL.ImpressDevContext context)
         {
             ImpressDevInitializer.SeedImpressDevData(context);
+            ImpressDevInitializer.SeedUsers(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method

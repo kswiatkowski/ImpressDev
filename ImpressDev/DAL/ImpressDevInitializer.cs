@@ -1,5 +1,7 @@
 ﻿using ImpressDev.Migrations;
 using ImpressDev.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -86,6 +88,38 @@ namespace ImpressDev.DAL
             };
             books.ForEach(x => context.Books.AddOrUpdate(x));
             context.SaveChanges();
+        }
+
+        public static void SeedUsers(ImpressDevContext db)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            const string name = "admin@impressdev.pl";
+            const string password = "Admin1!";
+            const string roleName = "Admin";
+
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                user = new ApplicationUser { UserName = name, Email = name, UserData = new UserData() };
+                var result = userManager.Create(user, password);
+            }
+
+            // create the Admin role if it does not exist
+            var role = roleManager.FindByName(roleName);
+            if (role == null)
+            {
+                role = new IdentityRole(roleName);
+                var roleresult = roleManager.Create(role);
+            }
+
+            // adding a user to the Admin role if it is not assigned
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(user.Id, role.Name);
+            }
         }
     }
 }

@@ -44,7 +44,20 @@
                 </div>
                 <div class="col-12 col-lg-2 align-self-center">
                     <span class="o-order-text-bold">Status:</span> <br class="o-order-br">
-                    <span class="o-order-text-light">@order.OrderStatus</span>
+                    @if (ViewBag.UserIsAdmin)
+                    {
+                        using (Html.BeginForm("ChangeOrderStatus", "Manage"))
+                        {
+                            @Html.HiddenFor(o => order.OrderId)
+                            @Html.EnumDropDownListFor(o => order.OrderStatus, new { @class = "ChangeStatus" })
+                        }
+                    }
+                    else
+                    {
+                        <span class="o-order-text-light">@order.OrderStatus</span>
+                    }
+
+
                 </div>
                 <div class="col-12 col-lg-2 align-self-center">
                     <span class="o-order-text-bold">Dane wysyłkowe:</span> <br>
@@ -60,15 +73,15 @@
                 <div class="col-12 col-lg-2 align-self-center">
                     <span class="o-order-text-bold">Uwagi:</span> <br>
                     <span class="o-order-text-light">
-                        @if (order.Comment == String.Empty)
+                        @if (order.Comment == null)
                         {<span>brak</span> }
                         else
-                        { @order.Comment}
+                        { @order.Comment }
                     </span>
                 </div>
                 <div class="col-12 col-lg-2 align-self-center">
                     <span class="o-order-text-bold">Łączny koszt:</span> <br class="o-order-br">
-                    <span class="o-order-text-light">@order.Price</span>
+                    <span class="o-order-text-light">@order.Price zł.</span>
                 </div>
 
                 <div class="col-12 o-order-item-div">
@@ -86,14 +99,14 @@
                                 </div>
                                 <div class="col-12 col-lg-2 align-self-center">
                                     <span class="o-order-text-bold">Cena:</span> <br class="o-order-br">
-                                    <span class="o-order-text-light">@orderItem.Book.Price</span>
+                                    <span class="o-order-text-light">@orderItem.Book.Price zł.</span>
                                 </div>
                                 <div class="col-12 col-lg-2 align-self-center">
                                     <span class="o-order-text-bold">Liczba:</span> <br class="o-order-br">
                                     <span class="o-order-text-light">@orderItem.Quantity szt.</span>
                                 </div>
                                 <div class="col-12 col-lg-2 align-self-center">
-                                    <span class="o-order-text-bold">Łącznie:</span> <br class="o-order-br">
+                                    <span class="o-order-text-bold">Razem:</span> <br class="o-order-br">
                                     <span class="o-order-text-light">@(orderItem.Book.Price * orderItem.Quantity) zł.</span>
                                 </div>
                             </div>
@@ -113,107 +126,23 @@
     }
 </div>
 
-@*<div class="row">
-    <div class="col-12">
-        @if (Model.Any())
-        {
-            <table id="orders-table">
-                @foreach (var order in Model)
-                {
-                    <tr @if (order.OrderStatus == ImpressDev.Models.OrderStatus.Nowe) { <text> class="noweZamowienie" </text> }>
-                        <td>
-                            Numer zamówienia: @order.OrderId
-                        </td>
-                        <td>
-                            Data:
-                            @order.DateAdded.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            Stan:<br />
-
-                            @if (ViewBag.UserIsAdmin)
-                            {
-                                using (Html.BeginForm("ChangeOrderStatus", "Manage"))
-                                {
-                                    @Html.HiddenFor(o => order.OrderId)
-                                    @Html.EnumDropDownListFor(o => order.OrderStatus, new { @class = "StanZamowieniaZmien" })
-                                }
-                            }
-                            else
-                            {
-                                @Html.DisplayFor(o => order.OrderStatus)
-                            }
-                        </td>
-                        <td>
-                            Dane wysyłkowe:<br />
-                            @order.Name @order.Surname<br />
-                            @order.Street<br />
-                            @order.PostalCode @order.City<br />
-                        </td>
-                        <td>
-                            Uwagi:<br />
-                            @order.Comment
-                        </td>
-                        <td>
-                            Łączny koszt: @order.Price zł.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">
-                            <section>
-                                <ul class="TrzyKolumnyList duzaListaKursy-bottom">
-
-                                    @foreach (var orderItem in order.OrderItems)
-                                    {
-                                        <li>
-                                            <article>
-                                                <a class="kursSzczegolyLink" href="@Url.Action("Details", "Catalog", new { id = orderItem.BookId })">
-                                                    <img class="kurs" src="@Url.Content("~/Content/Images/Books/" + orderItem.Book.PhotoSource)" />
-                                                    <h1>
-                                                        @orderItem.Book.Title - @orderItem.Book.SubTitle - @orderItem.Book.Level<br />
-                                                        sztuk: @orderItem.Quantity, łącznie: @(orderItem.Quantity * orderItem.Price)  zł.
-                                                    </h1>
-                                                </a>
-                                            </article>
-                                        </li>
-                                    }
-                                </ul>
-                            </section>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
-                }
-            </table>
-        }
-        else
-        {
-            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                Brak zamówień.
-            </div>
-        }
-    </div>
-</div>
-    </div>*@
-
 @section Scripts
 {
-    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
 
     <script>
-    $(".StanZamowieniaZmien").on('change', function (e) {
+    $(".ChangeStatus").on('change', function (e) {
         //e.preventDefault();
         var f = $(this.form);
-        var tr = f.closest("tr");
+        var div = f.closest("div");
         var action = f.attr("action");
         var serializedForm = f.serialize();
         $.post(action, serializedForm).done(function (data) {
             if (data == '@ImpressDev.Models.OrderStatus.Nowe.ToString()') {
-                tr.addClass("noweZamowienie")
+                div.addClass("o-newStatus")
             }
             else {
-                tr.removeClass("noweZamowienie");
+                div.removeClass("o-newStatus");
             }
           });
     });
