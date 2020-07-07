@@ -86,7 +86,7 @@ body {
 .o-baner-text-2 {
     font-size: 90px;
     color: white;
-    margin-bottom: 150px;
+    margin-bottom: 110px;
 }
 
 .o-baner-text-3 {
@@ -131,8 +131,8 @@ body {
     }
 
 .o-baner-img {
-    max-width: 75%;
-    margin-top: 30px
+    max-width: 70%;
+    margin-top: 20px
 }
 
 .o-category-home {
@@ -179,6 +179,16 @@ body {
     font-size: 60px;
     color: #ffc301;
     margin-bottom: 30px;
+}
+
+@media (max-width: 991px) {
+    .o-best-heading {
+        font-size: 45px;
+    }
+
+    .o-news-heading {
+        font-size: 45px;
+    }
 }
 
 .o-shop-item {
@@ -262,7 +272,7 @@ body {
 
 .o-fotter-copy {
     color: white;
-    margin: 30px 0 10px 0;
+    margin: 0px 0 10px 0;
 }
 
 .o-page {
@@ -410,6 +420,12 @@ body {
     width: 100%;
 }
 
+@media (max-width: 1199px) {
+    .o-details-img {
+        margin-bottom: 30px;
+    }
+}
+
 .o-details-text {
     text-align: left;
 }
@@ -465,10 +481,10 @@ body {
     color: black;
 }
 
-.o-cart-book-link:hover {
-    color: black;
-    text-decoration: none;
-}
+    .o-cart-book-link:hover {
+        color: black;
+        text-decoration: none;
+    }
 
 .o-cart-text {
     padding: 10px 0 10px 0;
@@ -637,11 +653,11 @@ body {
     }
 
         .o-form-table input[type=text] {
-            width: 240px;
+            width: 200px;
         }
 
         .o-form-table input[type=password] {
-            width: 240px;
+            width: 200px;
         }
 
     .o-form-btn {
@@ -679,6 +695,27 @@ body {
 .o-checkout-table .field-validation-error {
     font-weight: 300;
     color: red;
+}
+
+.o-confirm-page-row {
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.o-confirm-page-light {
+    font-weight: 300;
+}
+
+.o-confirm-page-bold {
+    font-weight: 600;
+}
+
+@media (max-width: 991px) {
+    .o-confirm-page-row {
+        font-size: 14px;
+    }
 }
 
 .o-form-validation-msg {
@@ -719,9 +756,13 @@ body {
     }
 }
 
+.o-manage-bar-row {
+    padding-bottom: 50px;
+}
+
 .o-manage-bar-btn-div {
     text-align: center;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
     padding-top: 10px;
 }
 
@@ -784,10 +825,10 @@ body {
     color: black;
 }
 
-.o-order-book-link:hover {
-    color: black;
-    text-decoration: none;
-}
+    .o-order-book-link:hover {
+        color: black;
+        text-decoration: none;
+    }
 
 .o-order-empty {
     font-size: 25px;
@@ -812,6 +853,21 @@ body {
 }
 
 .o-newStatus {
+}
+
+.o-manage-addbook-confirm {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: green;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 991px) {
+    .o-manage-addbook-confirm {
+        font-size: 14px;
+    }
 }
 
 .hidden {

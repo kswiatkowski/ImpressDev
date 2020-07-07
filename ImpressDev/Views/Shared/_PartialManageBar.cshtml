@@ -1,0 +1,33 @@
+﻿@if (User.IsInRole("Admin"))
+{
+    <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="container">
+            <div class="row o-manage-bar-row">
+                <div class="col-6 col-lg-4 d-flex justify-content-around o-manage-bar-btn-div">
+                    <a class="o-manage-bar-btn" href="@Url.Action("Index", "Manage")">Edycja danych</a>
+                </div>
+                <div class="col-6 col-lg-4 d-flex justify-content-around o-manage-bar-btn-div">
+                    <a class="o-manage-bar-btn" href="@Url.Action("OrdersList", "Manage")">Lista zamówień</a>
+                </div>
+                <div class="col-12 col-lg-4 d-flex justify-content-around o-manage-bar-btn-div">
+                    <a class="o-manage-bar-btn" href="@Url.Action("AddBook", "Manage")">Dodaj/edytuj produkt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-12 col-lg-8 offset-lg-2">
+        <div class="container">
+            <div class="row o-manage-bar-row">
+                <div class="col-6 d-flex justify-content-around o-manage-bar-btn-div">
+                    <a class="o-manage-bar-btn" href="@Url.Action("Index", "Manage")">Edycja danych</a>
+                </div>
+                <div class="col-6 d-flex justify-content-around o-manage-bar-btn-div">
+                    <a class="o-manage-bar-btn" href="@Url.Action("OrdersList", "Manage")">Lista zamówień</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

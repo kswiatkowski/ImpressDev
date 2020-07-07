@@ -1,12 +1,15 @@
 ﻿using ImpressDev.App_Start;
 using ImpressDev.DAL;
+using ImpressDev.Infrastructure;
 using ImpressDev.Models;
 using ImpressDev.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -172,6 +175,79 @@ namespace ImpressDev.Controllers
             db.SaveChanges();
 
             return order.OrderStatus;
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddBook (int? bookId, bool? confirm)
+        {
+            Book book;
+            if (bookId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                book = db.Books.Find(bookId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                book = new Book();
+            }
+
+            var result = new EditBookViewModel();
+            result.Categories = db.Categories.ToList();
+            result.Book = book;
+            //confirm when [HttpPost]AddBook succeed
+            result.Confirm = confirm;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddBook(EditBookViewModel model, HttpPostedFileBase file)
+        {
+            if (model.Book.BookId > 0)
+            {
+                // edit
+                db.Entry(model.Book).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AddBook", new { confirm = true });
+            }
+            else
+            {
+                //add
+                if (file != null && file.ContentLength > 0)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        var fileExt = Path.GetExtension(file.FileName);
+                        var filename = Guid.NewGuid() + fileExt;
+                        var path = Path.Combine(Server.MapPath(AppConfig.BookPhotoSourceFolder), filename);
+                        file.SaveAs(path);
+
+                        model.Book.PhotoSource = filename;
+                        model.Book.DateAdded = DateTime.Now;
+
+                        db.Books.Add(model.Book);
+                        db.SaveChanges();
+
+                        return RedirectToAction("AddBook", new { confirm = true });
+                    }
+                    else
+                    {
+                        var categories = db.Categories.ToList();
+                        model.Categories = categories;
+                        return View(model);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Nie wskazano pliku");
+                    // in case of an error - the model will be forwarded, but without a category (to dropdown list)
+                    var categories = db.Categories.ToList();
+                    model.Categories = categories;
+                    return View(model);
+                }
+            }
         }
     }
 }

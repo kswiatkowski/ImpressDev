@@ -29,6 +29,41 @@ namespace ImpressDev
                defaults: new { controller = "Cart", action = "Index" });
 
             routes.MapRoute(
+               name: "Pay",
+               url: "koszyk/podsumowanie",
+               defaults: new { controller = "Cart", action = "Pay" });
+
+            routes.MapRoute(
+               name: "Confirm",
+               url: "koszyk/potwierdzenie",
+               defaults: new { controller = "Cart", action = "ConfirmOrder" });
+
+            routes.MapRoute(
+               name: "Login",
+               url: "moje-konto/zaloguj",
+               defaults: new { controller = "Account", action = "Login" });
+
+            routes.MapRoute(
+               name: "Register",
+               url: "moje-konto/zarejestruj",
+               defaults: new { controller = "Account", action = "Register" });
+
+            routes.MapRoute(
+               name: "UserData",
+               url: "moje-konto/edycja-danych",
+               defaults: new { controller = "Manage", action = "Index" });
+
+            routes.MapRoute(
+               name: "OrdersList",
+               url: "moje-konto/lista-zamowien",
+               defaults: new { controller = "Manage", action = "OrdersList" });
+
+            routes.MapRoute(
+               name: "AddBook",
+               url: "moje-konto/edycja-produktu",
+               defaults: new { controller = "Manage", action = "AddBook" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

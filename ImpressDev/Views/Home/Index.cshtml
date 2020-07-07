@@ -19,7 +19,7 @@
 
             @foreach (var bestseller in Model.Bestsellers)
             {
-                <div class="col-xl-4">
+                <div class="col-12 col-md-6 col-xl-4">
                     <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = bestseller.BookId })">
                         <div class="o-shop-item">
                             <img class="o-shop-img" src="@Url.BookPhotoSourcePath(bestseller.PhotoSource)" />
@@ -47,7 +47,7 @@
         <div class="row">
             @foreach (var news in Model.News)
             {
-                <div class="col-xl-4">
+                <div class="col-12 col-md-6 col-xl-4">
                     <a class="o-shop-link" href="@Url.Action("Details", "Catalog", new { bookId = news.BookId })">
                         <div class="o-shop-item">
                             <img class="o-shop-img" src="@Url.BookPhotoSourcePath(news.PhotoSource)" />

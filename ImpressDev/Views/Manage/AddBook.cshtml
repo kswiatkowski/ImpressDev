@@ -1,0 +1,156 @@
+﻿@model ImpressDev.ViewModels.EditBookViewModel
+@{
+    ViewBag.Title = "Edycja produktu";
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @Html.Partial("_PartialManageBar")
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2 o-manage-heading">
+            Edycja produktu
+        </div>
+    </div>
+    @if (Model.Confirm.HasValue && Model.Confirm.Value)
+    {
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 o-manage-addbook-confirm">
+                Zmiany wprowadzone pomyślnie!
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2">
+            @using (Html.BeginForm("AddBook", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="manage-error o-pass-validation-msg">
+                    @Html.ValidationSummary()
+                </div>
+                @Html.HiddenFor(o => o.Book.BookId)
+                @Html.HiddenFor(o => o.Book.DateAdded)
+                @Html.HiddenFor(o => o.Book.PhotoSource)
+
+                <table class="o-form-table">
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Title, "Tytuł:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Title)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Title)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.SubTitle, "Podtytuł:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.SubTitle)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.SubTitle)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Level, "Poziom:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Level)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Level)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Author, "Autor:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Author)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Author)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.PublishingHouse, "Wydawnictwo:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.PublishingHouse)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.PublishingHouse)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Pages, "Liczba stron:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Pages)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Pages)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Cover, "Druk:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Cover)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Cover)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Description, "Opis:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Description)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Description)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Price, "Cena:")</td>
+                        <td>
+                            @Html.TextBoxFor(o => o.Book.Price)
+                            <div class="o-form-validation-msg">
+                                @Html.ValidationMessageFor(o => o.Book.Price)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Bestseller, "Bestseller:")</td>
+                        <td>@Html.CheckBoxFor(o => o.Book.Bestseller)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Book.Inaccessible, "Brak w magazynie:")</td>
+                        <td>@Html.CheckBoxFor(o => o.Book.Inaccessible)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(o => o.Categories, "Kategoria:")</td>
+                        <td>@Html.DropDownListFor(m => m.Book.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name", Model.Categories.First().CategoryId))</td>
+                    </tr>
+                    @if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                    {
+                        <tr>
+                            <td colspan="2">
+                                <div class="upload">
+                                    <input type="file" name="file" />
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="2">
+                            <div class="o-form-btn-div">
+                                <input type="submit" value="Potwierdź" class="submitLink o-form-btn" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
