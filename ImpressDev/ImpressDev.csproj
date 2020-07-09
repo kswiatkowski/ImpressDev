@@ -160,6 +160,7 @@
     <Content Include="Content\Images\Books\typescript.jpg" />
     <Content Include="Content\Images\Books\visualbasic.jpg" />
     <Content Include="Content\Images\computer.png" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\icon-white.png" />
     <Content Include="Content\Images\map.png" />
     <Content Include="Content\Images\search-icon.png" />
