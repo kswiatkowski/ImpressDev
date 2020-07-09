@@ -45,7 +45,16 @@
                             @Model.Description
                         </div>
                     </div>
-
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="o-form-btn-div">
+                                    <a href="@Url.Action("AddBook", "Manage", new { bookId = Model.BookId })" class="o-form-btn">Edytuj produkt</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
