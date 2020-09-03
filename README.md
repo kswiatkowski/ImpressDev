@@ -1,15 +1,10 @@
-# ImpressDev - BookShop in ASP.NET MVC
-**by kswiatkowski**
-
- - LinkedIn: [linkedin.com/in/kswiatkowski](www.linkedin.com/in/kswiatkowski)
- - Email: kaswiatkowski@gmail.com
-
-# Live Demo:
+## ImpressDev - BookShop in ASP.NET MVC
+### Live Demo: 
 http://impressdev.somee.com/
 
 ![](Screenshots/screenshot%20(1).png)
 
-# Features:
+### Features:
 
 **Product catalog:**
  - cache - downloading a list of categories, news and bestsellers (24h cache) (home page)
@@ -39,7 +34,7 @@ http://impressdev.somee.com/
 **Summary:**
   - Entity Framework (CodeFirst), Bootstrap, RWD, Cache, ASP Identity, Linq, JavaScript, Ajax, jQuery, MvcSiteMapProvider, Unobtrusive Validation, and a lot more...
   
-  # Screenshots:
+  ### Screenshots:
 Screenshot 1. Product catalog with asynchronous search engine (ajax):
 ![](Screenshots/screenshot%20(2).png)
 
@@ -55,6 +50,10 @@ Screenshot 4. Order history / changing order status (admin role required):
 Screenshot 5. Product adding / editing (admin role required):
 ![](Screenshots/screenshot%20(6).png)
 
-# Todos
+### Todos:
 
  - Add Night Mode
+ 
+ ### Author:
+ - LinkedIn: https://www.linkedin.com/in/kswiatkowski
+ - Email: kaswiatkowski@gmail.com
